@@ -1,0 +1,5 @@
+Chyba byla v metode: map.setCenter(newPoint, yes); - promenna yes nebyla definovana (dana metoda bere jako druhy parametr booelan - zda-li se prechod na danou lokaci ma animovat)
+Dale byla chyba v txtLonDeg, txtLonMin, txLonSec - JavaScript hledal inputy txtLngDeg, txtLngMin a txtLngSec
+
+Na chyby jsem prisel z console, kde bylo vypsano, ze promenna yes neexistuje.
+Na chyby v txtLonDeg jsem prisel pouhym manualnim testovanim aplikace.

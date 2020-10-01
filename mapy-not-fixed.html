@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+    <script src="https://api.mapy.cz/loader.js"></script>
+    <script>Loader.load()</script>
+    <style>
+        body{
+            font-family:Verdana;
+        }
+        input{
+            width: 75px;
+        }
+        input[type=button]{
+            width: 150px
+        }
+    </style>
+</head>
+ 
+<body>
+    <div style="width:100%;height:100%;border-style:solid;border-width:1;border-color:red">
+        <div id="controls" style="width:100%;height:20%; margin: 8px">
+            Latitude:
+            <input type="number" id="txtLatDeg" min="-90" max="90" />
+            <input type="number" id="txtLatMin" min="0" max="59.999" />
+            <input type="number" id="txtLatSec" min="0" max="59.999" />
+            Longitude:
+            <input type="number" id="txtLonDeg" min="-180" max="180" />
+            <input type="number" id="txtLonMin" min="0" max="59.999" />
+            <input type="number" id="txtLonSec" min="0" max="59.999" />
+            <input type="button" onclick="updateMapView()" value="Update position" />
+            <span id="lblResult" />
+        </div>
+        <div id="divMap" style="width:99%; height:800px; margin: 8px"></div>
+    </div>
+ 
+    <script type="text/javascript">
+        function updateMapView() {
+            var lat = extractCoordinate($("#txtLatDeg"), $("#txtLatMin"), $("#txtLatSec"));
+            var lng = extractCoordinate($("#txtLngDeg"), $("#txtLngMin"), $("#txtLngSec"));
+            var newPoint = SMap.Coords.fromWGS84(lng, lat);
+            map.setCenter(newPoint, yes);
+            var s = "Moving to " + lat + "; " + lng;
+            $("#lblResult").html(s);
+        }
+ 
+        function extractCoordinate(txtDeg, txtMin, txtSec) {
+            var degVal = txtDeg.val();
+            var minVal = txtMin.val();
+            var secVal = txtSec.val();
+            var deg;
+            var min;
+            var sec;
+            deg = Number(degVal);
+            min = Number(minVal);
+            sec = Number(secVal);
+            var ret = deg + min / 60 + sec / 3600;
+            return ret;
+        }
+ 
+        var center = SMap.Coords.fromWGS84(14.41, 50.08);
+        var map = new SMap(JAK.gel("divMap"), center, 10);
+        map.addDefaultLayer(SMap.DEF_BASE).enable();
+        map.addDefaultControls();
+    </script>
+</body>
+</html>
