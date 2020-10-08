@@ -1,10 +1,7 @@
 package cz.osu;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.Scanner;
 
 public class App {
 
@@ -15,62 +12,28 @@ public class App {
 
         logger.info("The program has started.");
 
-        int a = 10;
-        int b = 0;
-
-        int c = a / b;
+        System.out.println(calculateFibonacciSequence(250));
 
         logger.info("The program has ended.");
     }
 
-    public static double calculateArithmeticMean(double[] data) {
-        assert data != null : "The data are expected to not be null.";
+    public static long calculateFibonacciSequence(int n) {
 
-        return Double.parseDouble(null);
-    }
+        assert n >= 0 : "The Fibonacci sequence can be calculated only for numbers bigger or equal to 0.";
 
-    private static int[] createIntersectionBetweenArrays(int[] a, int[] b) {
+        long[] fibonacciSequence = new long[n+2];
 
-        assert a != null;
-        assert a.length != 0;
+        // Known values in fibonacci sequence
+        fibonacciSequence[0] = 0;
+        fibonacciSequence[1] = 1;
 
-        assert b != null;
-        assert b.length != 0;
-
-        int[] ret = null;
-
-        int nextIndex = 0;
-
-        
-        Integer[] tmp = new Integer[Math.min(a.length, b.length)];
-
-        assert tmp.length <= a.length && tmp.length <= b.length;
-
-        for (int i = 0; i < a.length; i++) {
-            for (int j = 0; j < b.length; j++) {
-                if (a[i] == b[j]) {
-                    tmp[nextIndex] = a[i];
-                    nextIndex++;
-                }
-            }
-        }
-        
-        for (int i = 0; i < tmp.length; i++) {
-            if (tmp[i] == null) {
-                ret = new int[i];
-                break;
-            }
+        for (int i = 2; i <= n; i++)
+        {
+            fibonacciSequence[i] = fibonacciSequence[i-1] + fibonacciSequence[i-2];
         }
 
-        if (ret == null)
-            ret = new int[tmp.length];
+        assert fibonacciSequence[n] >= 0: "The Fibonacci sequence overflowed the long number.";
 
-        assert ret != null;
-
-        for (int i = 0; i < ret.length; i++) {
-            ret[i] = tmp[i];
-        }
-
-        return ret;
+        return fibonacciSequence[n];
     }
 }
