@@ -15,19 +15,13 @@ dependencies {
     compileOnly(
             'org.slf4j:slf4j-api:1.7.2',
             'ch.qos.logback:logback-classic:1.0.9',
-            'ch.qos.logback:logback-core:1.0.9',
-            'com.fasterxml.jackson.core:jackson-core:2.11.0',
-            'com.fasterxml.jackson.core:jackson-databind:2.11.0',
-            'com.fasterxml.jackson.core:jackson-annotations:2.11.0'
+            'ch.qos.logback:logback-core:1.0.9'
     )
 
     runtimeOnly(
             'org.slf4j:slf4j-api:1.7.2',
             'ch.qos.logback:logback-classic:1.0.9',
-            'ch.qos.logback:logback-core:1.0.9',
-            'com.fasterxml.jackson.core:jackson-core:2.11.0',
-            'com.fasterxml.jackson.core:jackson-databind:2.11.0',
-            'com.fasterxml.jackson.core:jackson-annotations:2.11.0'
+            'ch.qos.logback:logback-core:1.0.9'
     )
 
     testImplementation(
