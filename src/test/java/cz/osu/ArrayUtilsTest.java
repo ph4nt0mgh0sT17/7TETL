@@ -106,7 +106,7 @@ class ArrayUtilsTest {
 
         assertEquals(
                 expectedMean, actualMean,
-                0.000000001, String.format("The expected standard deviation '%f' is not equal to actual standard deviation '%f'.", expectedMean, actualMean)
+                0.00000001, String.format("The expected standard deviation '%f' is not equal to actual standard deviation '%f'.", expectedMean, actualMean)
         );
     }
 
@@ -139,14 +139,14 @@ class ArrayUtilsTest {
      */
     @Test
     void getStandardDeviationFromDoubleArray() {
-        double data[] = {1.5, 2.54, 3.98, 4.5, 5.3, 6.5, 7.43, 8.43, 9.54, 10.13};
+        double data[] = {1.5, 2.89, 3.98, 4.5, 5.3, 6.5, 7.43, 8.43, 9.54, 10.13};
 
-        double expectedMean = 2.77178733D;
+        double expectedMean = 2.877630198D;
         double actualMean = ArrayUtils.getStandardDeviation(data);
 
         assertEquals(
                 expectedMean, actualMean,
-                0.2, String.format("The expected standard deviation '%f' is not equal to actual standard deviation '%f'.", expectedMean, actualMean)
+                0.00000001, String.format("The expected standard deviation '%f' is not equal to actual standard deviation '%f'.", expectedMean, actualMean)
         );
     }
 
